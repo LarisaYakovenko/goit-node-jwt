@@ -18,7 +18,7 @@ const userSchema = new Schema({
     enum: ["starter", "pro", "business"],
     default: "starter"
   },
-  token: String
+  token: String,
 
 }, { versionKey: false, timestamps: true });
 
@@ -36,6 +36,14 @@ export const loginSchema = Joi.object({
   
 })
 
+export const updateSubscriptionSchema = Joi.object({
+  subscription: Joi.string()
+    .valid(("starter", "pro", "business"))
+    .required()
+    .messages({
+      "any.required": "missing required subscription field",
+    }),
+});
 
 const User = model("user", userSchema);
 

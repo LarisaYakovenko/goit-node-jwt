@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 import Joi from "joi";
 
-import { handleMongooseError } from '../helpers/handleMongooseError.js';
+import  handleMongooseError  from '../helpers/index.js';
 
 const userSchema = new Schema({
   password: {
@@ -25,10 +25,9 @@ const userSchema = new Schema({
 userSchema.post("save", handleMongooseError);
 
 export const registerSchema = Joi.object({
-  name: Joi.string().required(),
   email: Joi.string().required(),
-  password: Joi.string().required(),
-  
+  password: Joi.string().min(6).required(),
+  // subscription:
 })
 
 export const loginSchema = Joi.object({ 

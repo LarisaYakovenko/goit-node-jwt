@@ -1,5 +1,6 @@
 import HttpError from '../helpers/HttpError.js';
-import  Contact  from '../models/contact.js';
+import Contact from '../models/contact.js';
+
 
 export const getAllContacts = async (req, res, next) => {
   try {
@@ -39,7 +40,7 @@ export const deleteContact = async (req, res, next) => {
   catch (error) {
     next(error);   
   }
-  res.json({ message: 'template message' })
+  // res.json({ message: 'template message' })
   
 };
 
@@ -51,7 +52,7 @@ export const createContact = async (req, res, next) => {
   catch (error) {
     next(error);
   }
-  res.json({ message: 'template message' })
+  // res.json({ message: 'template message' })
 };
 
 export const updateContact = async (req, res, next) => {
@@ -62,10 +63,10 @@ export const updateContact = async (req, res, next) => {
         throw HttpError(404, "Not found");
     }
     res.json(result);
-    }
-    catch (error) {
-        next(error);
-    }
+  }
+  catch (error) {
+    next(error);
+  }
 };
 
 export const updateFavorit = async (req, res, next) => {
@@ -76,8 +77,8 @@ export const updateFavorit = async (req, res, next) => {
         throw HttpError(404, "Not found");
     }
     res.json(result);
-    }
-    catch (error) {
-        next(error);
-    }
+  }
+  catch (error) {
+      next(error);
+  }
 };
